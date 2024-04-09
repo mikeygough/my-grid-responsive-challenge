@@ -1,191 +1,234 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Finland</title>
-  <style>
-    some-element {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    }
+  <head>
+    <title>Finland</title>
+    <style>
+      some-element {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+          'Helvetica Neue', sans-serif;
+      }
 
-    body, html {
-      /* Make the body expand to the full height of the window */
-      height: 100%;
-    }
-    body {
-      /* Center the dashboard in the window */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      color: #fff;
-      /* background-color: rgb(119, 216, 216); */
-      /* background-image: url(images/finland-6.png); */
-      background-size: cover;
-    }
+      body,
+      html {
+        /* Make the body expand to the full height of the window */
+        height: 100%;
+      }
+      body {
+        /* Center the dashboard in the window */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+          'Helvetica Neue', sans-serif;
+        color: #fff;
+        /* background-color: rgb(119, 216, 216); */
+        /* background-image: url(images/finland-6.png); */
+        background-size: cover;
+      }
 
-    .dashboard {
-      /* border: 1px solid #000; */
-      max-width: 800px;
-      height: 600px;
-      /* Layout the dashboard grid */
-      display: grid;
-      grid-gap: 15px;
-      grid-template-areas: "t t t t"  /* .title first row*/
-                           "m w w w"  /* .population and .welcome second row */
-                           "p c l g"; /* .gdp, .code, .govt, and .news row 3 */
-      grid-template-rows: 100px 200px 200px;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
+      .dashboard {
+        /* border: 1px solid #000; */
+        max-width: 800px;
+        height: 600px;
+        /* Layout the dashboard grid */
+        display: grid;
+        grid-gap: 15px;
+        grid-template-areas:
+          't t t t' /* .title first row*/
+          'm w w w' /* .population and .welcome second row */
+          'p c l g'; /* .gdp, .code, .govt, and .news row 3 */
+        grid-template-rows: 100px 200px 200px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
 
-    * {
-      margin: 0;
-    }
+      /* tablets */
+      @media (max-width: 800px) {
+        .dashboard {
+          margin: 0.5rem;
+          display: grid;
+          grid-gap: 15px;
+          grid-template-areas:
+            't t t'
+            'm m c'
+            'p p p'
+            'w l l'
+            'g g g';
+          grid-template-rows: 100px 200px 200px;
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+      }
 
-    button {
-      padding: 0.5rem;
-      border: none;
-      background-color: #fff;
-    }
+      /* mobile */
+      @media (max-width: 480px) {
+        .dashboard {
+          display: grid;
+          grid-gap: 15px;
+          grid-template-areas:
+            't t'
+            'm c'
+            'w l'
+            'p p'
+            'g g';
+          grid-template-rows: 100px 200px 200px;
+          grid-template-columns: 1fr 1fr;
+        }
+      }
 
-    input {
-      padding: 0.5rem;
-    }
+      * {
+        margin: 0;
+      }
 
-    button, input {
-      margin: 0  0 1rem 0;
-    }
+      button {
+        padding: 0.5rem;
+        border: none;
+        background-color: #fff;
+      }
 
-    label {
-      font-size: 0.85rem;
-    }
+      input {
+        padding: 0.5rem;
+      }
 
-    /* Name each of the areas t, m, w, p, c, l, and g */
-    .title { 
-      grid-area: t; 
-      text-align: center;
-      color: #000;
-    }
-    .population { 
-      grid-area: m; 
-      background-image: url(images/finland-8.jpg);
-      background-size: cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-    .welcome { 
-      grid-area: w; 
-      background-image: url(images/finland-2.jpg);
-      background-size: cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: flex-end;
-    }
-    .gdp { 
-      grid-area: p; 
-      background-image: url(images/finland-3.jpg);
-      background-size: cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: flex-end;
-    }
-    .code { 
-      grid-area: c; 
-      background-image: url(images/finland-4.jpg);
-      background-size: cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-    .govt { 
-      grid-area: l; 
-      background-image: url(images/finland-1.jpg);
-      background-size: cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      position: relative;
-    }
-    .news { 
-      grid-area: g;
-      background-image: url(images/finland-5.jpg);
-      background-size: cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-    }
+      button,
+      input {
+        margin: 0 0 1rem 0;
+      }
 
-    .news button {
-      align-self: flex-end;
-    }
+      label {
+        font-size: 0.85rem;
+      }
 
-    .grid-cell {
-      background-color: #fff;
-      padding: 1em;
-    }
+      /* Name each of the areas t, m, w, p, c, l, and g */
+      .title {
+        grid-area: t;
+        text-align: center;
+        color: #000;
+      }
+      .population {
+        grid-area: m;
+        background-image: url(images/finland-8.jpg);
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .welcome {
+        grid-area: w;
+        background-image: url(images/finland-2.jpg);
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+      }
+      .gdp {
+        grid-area: p;
+        background-image: url(images/finland-3.jpg);
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+      }
+      .code {
+        grid-area: c;
+        background-image: url(images/finland-4.jpg);
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .govt {
+        grid-area: l;
+        background-image: url(images/finland-1.jpg);
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        position: relative;
+      }
+      .news {
+        grid-area: g;
+        background-image: url(images/finland-5.jpg);
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+      }
 
-    .nato {
-      position: absolute;
-      padding: 1rem;
-      background-color: gold;
-      color: #000;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      font-size: 0.75rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      right: -20px;
-      top: -20px;
-      transform: rotate(15deg);
-    }
+      .news button {
+        align-self: flex-end;
+      }
 
-  </style>
-</head>
-<body>
-  <div class="dashboard">
-    <header class="title">
-      <h1>Finland</h1>
-      <p>NATO member!</p>
-    </header>
-    
+      .grid-cell {
+        background-color: #fff;
+        padding: 1em;
+      }
 
-    <div class="population grid-cell">
-        <h2>population: </h2>
+      .nato {
+        position: absolute;
+        padding: 1rem;
+        background-color: gold;
+        color: #000;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 0.75rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        right: -20px;
+        top: -20px;
+        transform: rotate(15deg);
+      }
+    </style>
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1"
+    />
+  </head>
+  <body>
+    <div class="dashboard">
+      <header class="title">
+        <h1>Finland</h1>
+        <p>NATO member!</p>
+      </header>
+
+      <div class="population grid-cell">
+        <h2>population:</h2>
         <p>5,536,146</p>
-    </div>
-    
-    <div class="welcome grid-cell">
-      <h2>Welcome</h2>
-      <p>Natural Resources, Economic Initiatives, Community Spaces</p>
-    </div>
+      </div>
 
-    <div class="gdp grid-cell">
-      <h2>GDP</h2>
-      <p>257 billion</p>
-    </div>
-    <div class="code grid-cell">
-      <h2>Calling Code</h2>
-      <p>+ 358</p>
-    </div>
-    <div class="govt grid-cell">
-      <h2>Government</h2>
-      <p>Unitary parliamentary republic</p>
-      <div class="nato">NATO Member!</div>
-    </div>
-    <div class="news grid-cell">
-      <h2>News</h2>
+      <div class="welcome grid-cell">
+        <h2>Welcome</h2>
+        <p>
+          Natural Resources, Economic Initiatives, Community Spaces
+        </p>
+      </div>
+
+      <div class="gdp grid-cell">
+        <h2>GDP</h2>
+        <p>257 billion</p>
+      </div>
+      <div class="code grid-cell">
+        <h2>Calling Code</h2>
+        <p>+ 358</p>
+      </div>
+      <div class="govt grid-cell">
+        <h2>Government</h2>
+        <p>Unitary parliamentary republic</p>
+        <div class="nato">NATO Member!</div>
+      </div>
+      <div class="news grid-cell">
+        <h2>News</h2>
         <label for="name">Name:</label>
-        <input id="name" type="text" placeholder="name"/>
+        <input id="name" type="text" placeholder="name" />
         <label for="email">Email:</label>
-        <input id="email" type="email" placeholder="email"/>
+        <input id="email" type="email" placeholder="email" />
         <button>Send</button>
+      </div>
     </div>
-  </div>
-  
-</body>
+  </body>
 </html>
